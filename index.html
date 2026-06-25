@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <h1>Vendor Registration</h1>
+        <p>Join our network of trusted vendors</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="form-wrapper">
+        <form id="vendorForm" class="vendor-form">
+          <!-- Business Information Section -->
+          <fieldset class="form-section">
+            <legend>Business Information</legend>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="businessName">Name of Business *</label>
+                <input 
+                  type="text" 
+                  id="businessName" 
+                  name="businessName" 
+                  placeholder="e.g., ABC Contracting"
+                  required
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="industry">Type of Industry *</label>
+                <input 
+                  type="text" 
+                  id="industry" 
+                  name="industry" 
+                  placeholder="e.g., Construction"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="businessAddress">Address of Business *</label>
+              <input 
+                type="text" 
+                id="businessAddress" 
+                name="businessAddress" 
+                placeholder="Street address"
+                required
+              >
+            </div>
+
+            <div class="form-group full-width">
+              <label for="businessWebsite">Company Website</label>
+              <input 
+                type="url" 
+                id="businessWebsite" 
+                name="businessWebsite" 
+                placeholder="https://example.com"
+              >
+            </div>
+          </fieldset>
+
+          <!-- Contact Information Section -->
+          <fieldset class="form-section">
+            <legend>Contact Information</legend>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="contactPerson">Contact Person *</label>
+                <input 
+                  type="text" 
+                  id="contactPerson" 
+                  name="contactPerson" 
+                  placeholder="Full name"
+                  required
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="contactTitle">Contact Person Title *</label>
+                <input 
+                  type="text" 
+                  id="contactTitle" 
+                  name="contactTitle" 
+                  placeholder="e.g., Owner"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="businessPhone">Phone Number (Business) *</label>
+                <input 
+                  type="tel" 
+                  id="businessPhone" 
+                  name="businessPhone" 
+                  placeholder="(555) 123-4567"
+                  required
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="contactPhone">Phone Number (Contact) *</label>
+                <input 
+                  type="tel" 
+                  id="contactPhone" 
+                  name="contactPhone" 
+                  placeholder="(555) 123-4567"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="businessEmail">Email Address *</label>
+              <input 
+                type="email" 
+                id="businessEmail" 
+                name="businessEmail" 
+                placeholder="contact@example.com"
+                required
+              >
+            </div>
+          </fieldset>
+
+          <!-- Licensing Section -->
+          <fieldset class="form-section">
+            <legend>Licensing & Certifications</legend>
+            
+            <div class="form-group full-width">
+              <label for="stateLicensed">State Licensed</label>
+              <input 
+                type="text" 
+                id="stateLicensed" 
+                name="stateLicensed" 
+                placeholder="License number or details"
+              >
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="parkerLicense">Town of Parker Business License *</label>
+                <select id="parkerLicense" name="parkerLicense" required>
+                  <option value="">Select...</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="critLicense">CRIT Business License *</label>
+                <select id="critLicense" name="critLicense" required>
+                  <option value="">Select...</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Preferences Section -->
+          <fieldset class="form-section">
+            <legend>Preferences</legend>
+            
+            <div class="form-group full-width">
+              <label>Best way to schedule services *</label>
+              <div class="checkbox-group">
+                <div class="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    id="call" 
+                    name="scheduleMethod" 
+                    value="call"
+                  >
+                  <label for="call">Call</label>
+                </div>
+                <div class="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    id="text" 
+                    name="scheduleMethod" 
+                    value="text"
+                  >
+                  <label for="text">Text</label>
+                </div>
+                <div class="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    id="email" 
+                    name="scheduleMethod" 
+                    value="email"
+                  >
+                  <label for="email">Email</label>
+                </div>
+                <div class="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    id="inperson" 
+                    name="scheduleMethod" 
+                    value="in-person"
+                  >
+                  <label for="inperson">In-person</label>
+                </div>
+                <div class="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    id="other" 
+                    name="scheduleMethod" 
+                    value="other"
+                  >
+                  <label for="other">Other</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Form Actions -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <span id="submitText">Yes, add my business to the vendor list</span>
+              <span id="submitSpinner" class="spinner" style="display: none;"></span>
+            </button>
+            <button type="reset" class="btn btn-secondary">Clear Form</button>
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message" style="display: none;">
+          <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h2>Thank You!</h2>
+            <p>Your business has been added to the vendor submission list. We’ll review your information and contact you soon.</p>
+            <button class="btn btn-secondary" onclick="location.reload()">Submit Another Business</button>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;">
+          <div class="error-content">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p id="errorText"></p>
+            <button class="btn btn-secondary" onclick="closeError()">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 Vendor Registration. Data stored securely.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

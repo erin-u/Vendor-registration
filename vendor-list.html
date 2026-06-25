@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <h1>Vendor List</h1>
+        <p>Public vendor submissions from the database</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="form-wrapper">
+        <div id="vendorList" class="vendor-list">
+          <p>Loading vendors...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 Vendor Registration. Data powered by Supabase.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0"></script>
+  <script src="config.js"></script>
+  <script>
+    const SUPABASE_URL = window.SUPABASE_CONFIG?.SUPABASE_URL || 'https://YOUR_PROJECT_ID.supabase.co';
+    const SUPABASE_ANON_KEY = window.SUPABASE_CONFIG?.SUPABASE_ANON_KEY || 'YOUR_ANON_KEY';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const vendorList = document.getElementById('vendorList');
+
+    async function loadVendors() {
+      const { data, error } = await supabase
+        .from('vendor_registrations')
+        .select('business_name, industry, business_address, business_website, business_email, contact_person, contact_person_title, business_phone, contact_phone, parker_business_license, crit_business_license, schedule_methods, submitted_at')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        vendorList.innerHTML = `<p class="error-text">Could not load vendor list: ${error.message}</p>`;
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        vendorList.innerHTML = '<p>No vendor submissions have been added yet.</p>';
+        return;
+      }
+
+      const rows = data.map((vendor) => {
+        const methods = Array.isArray(vendor.schedule_methods) ? vendor.schedule_methods.join(', ') : vendor.schedule_methods;
+        return `
+          <div class="vendor-card">
+            <h3>${vendor.business_name}</h3>
+            <p><strong>Industry:</strong> ${vendor.industry}</p>
+            <p><strong>Address:</strong> ${vendor.business_address}</p>
+            <p><strong>Website:</strong> ${vendor.business_website ? `<a href="${vendor.business_website}" target="_blank" rel="noopener noreferrer">${vendor.business_website}</a>` : 'N/A'}</p>
+            <p><strong>Email:</strong> ${vendor.business_email || 'N/A'}</p>
+            <p><strong>Contact:</strong> ${vendor.contact_person} (${vendor.contact_person_title})</p>
+            <p><strong>Phones:</strong> ${vendor.business_phone} / ${vendor.contact_phone}</p>
+            <p><strong>Parker License:</strong> ${vendor.parker_business_license}</p>
+            <p><strong>CRIT License:</strong> ${vendor.crit_business_license}</p>
+            <p><strong>Preferred scheduling:</strong> ${methods}</p>
+            <p><strong>Submitted:</strong> ${new Date(vendor.submitted_at).toLocaleString()}</p>
+          </div>
+        `;
+      }).join('');
+
+      vendorList.innerHTML = rows;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadVendors);
+  </script>
+</body>
+</html>
